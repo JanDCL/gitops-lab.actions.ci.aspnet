@@ -21,15 +21,7 @@ jobs:
     # restore NuGet packages
     - name: Restore dependencies
       run: dotnet restore
-    # build the project
-    - name: Build
-      run: dotnet build --no-restore
-    # run test
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
 
-jobs:
-  build:
     env:
       configuration: release
     -name: Build
