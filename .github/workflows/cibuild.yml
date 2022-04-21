@@ -27,3 +27,12 @@ jobs:
     # run test
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+jobs:
+  build:
+    env:
+      configuration: release
+    -name: Build
+      run: dotnet build --no-restore --configuration ${{ env.configuration }}
+    -name: Test
+      run: dotnet test --no-build --verbosity normal --configuration ${{ env.configuration }}
