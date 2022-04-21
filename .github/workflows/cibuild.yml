@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    env:
+      configuration: release
     runs-on: ubuntu-latest
     steps:
     # checkout all sources from git
@@ -22,9 +24,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    env:
-      configuration: release
-    -name: Build
+    - name: Build
       run: dotnet build --no-restore --configuration ${{ env.configuration }}
-    -name: Test
+    - name: Test
       run: dotnet test --no-build --verbosity normal --configuration ${{ env.configuration }}
